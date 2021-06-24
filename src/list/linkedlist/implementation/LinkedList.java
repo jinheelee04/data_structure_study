@@ -84,7 +84,7 @@ public class LinkedList {
         if(k==0){
             addFirst(input);
         }else{
-            // k -1 번째 노드
+            // k-1 번째 노드
             Node temp1 = node(k-1);
             // k 번째 노드
             Node temp2 = temp1.next;
