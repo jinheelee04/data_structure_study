@@ -153,16 +153,13 @@ public class LinkedList {
         // 삭제 노드를 todoDeleted에 기록
         // 삭제 노드를  지금 제거하면 삭제 앞 노드와 삭제 뒤 노드를 연결할 수 없음
         Node todoDeleted = temp.next;
-        if(todoDeleted==tail){
-            temp.next = null;
-            tail = temp;
-
-        }else{
-            //삭제 앞 노드의 다음 노드로 삭제 뒤 노드를 지정
-            temp.next = todoDeleted.next.next;
-        }
-        //삭제된 데이터를 리턴하기 위해서 returnData에 데이터를 저장
+        // 삭제 앞 노드의 다음 노드로 삭제 뒤 노드를 지정
+        temp.next = temp.next.next;
+        // 삭제된 데이터를 리턴하기 위해서 returnData에 데이터를 저장
         Object returnData = todoDeleted.data;
+        if(todoDeleted==tail){
+            tail = temp;
+        }
         todoDeleted = null;
         size--;
         return returnData;
@@ -186,6 +183,31 @@ public class LinkedList {
         return temp.data;
     }
 
+    /**
+     * 특정 값을 가진 엘리먼트의 인덱스 값 구하기
+     * @param data
+     * @return
+     */
+    public int indexOf(Object data){
+        // 탐색 대상이 되는 노드를 temp로 지정한다.
+        Node temp = head;
+        int index = 0;
+        // 탐색 값과 탐색 대상의 값 비교
+        while(temp.data != data){
+            temp = temp.next;
+            index++;
+            //더 이상 탐색 대상이 없으면 -1 리턴
+            if(temp == null)
+                return -1;
+        }
+        // 탐색 대상의 인덱스 값 리턴 
+        return index;
+    }
+
+    /**
+     * 반복자 생성
+     * @return
+     */
     public ListIterator listIterator(){
         return new ListIterator();
     }
@@ -221,6 +243,7 @@ public class LinkedList {
                 newNode.next = next;
             }
             lastReturned = newNode;
+            tail = newNode;
             nextIndex++;
             size++;
         }
