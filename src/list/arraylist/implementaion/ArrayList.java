@@ -90,4 +90,25 @@ public class ArrayList {
         return remove(size-1);
     }
 
+    /**
+     * 리스트의 크기 구하기
+     * @return
+     */
+    public int size(){
+        return size;
+    }
+
+    /**
+     * 입력 받은 값의 인덱스
+     * @param value
+     * @return
+     */
+    public int indexOf(Object value) {
+        for(int i=0; i< elementData.length;i++){
+            if(elementData[i].equals(value)){
+                return i;
+            }
+        }
+        return -1;
+    }
 }

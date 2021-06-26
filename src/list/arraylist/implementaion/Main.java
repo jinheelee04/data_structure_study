@@ -37,5 +37,14 @@ public class Main {
         System.out.println(numbers.removeLast()); // 40
         System.out.println(numbers); // [15, 20, 30]
         System.out.println("--------------------------------");
+        
+        System.out.println("--- #7 저장된 값 가져오기");
+        System.out.println(numbers.get(0));
+        System.out.println(numbers.get(1));
+        System.out.println(numbers.get(2));
+
+        System.out.println(numbers.size());
+
+        System.out.println(numbers.indexOf(20));
     }
 }
